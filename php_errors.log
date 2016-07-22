@@ -1,0 +1,4 @@
+[22-Jul-2016 03:20:50 UTC] PHP Fatal error:  Call to undefined method config::connect() in /home/ubuntu/workspace/park/ProjectMVC/models/config.php on line 12
+[22-Jul-2016 03:20:50 UTC] PHP Stack trace:
+[22-Jul-2016 03:20:50 UTC] PHP   1. {main}() /home/ubuntu/workspace/park/ProjectMVC/models/config.php:0
+[22-Jul-2016 03:20:50 UTC] PHP   2. config->__construct() /home/ubuntu/workspace/park/ProjectMVC/models/config.php:18
