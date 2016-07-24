@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 
   <html>
 
@@ -35,7 +35,7 @@
             
             
         <!--<input type="submit" name="btnOK" id="btnOK" value="登入"/>-->
-            <input type="submit" name="btnOK" id="btnOK" value="登入" <?php echo $Lurl;?>/>
+            <input type="submit" name="btnOK" id="btnOK" value="登入" <?php echo $data;?>/>
             <input type="reset" name="btnReset" id="btnReset" value="重設" />
             <input type="button" name="btnHome" id="btnHome" onclick="location.href='index'" value="回首頁" /> 
             <input type="button" name="btnRegistered" id="btnRegistered" onclick="location.href='registered'"  value="註冊" />

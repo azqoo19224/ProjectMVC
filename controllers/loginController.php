@@ -20,10 +20,16 @@
                 {
                   header("Location: message");
                     exit();
-                    }
-             $_SESSION["logi"]=$_GET["message"];
-             $Lurl ="onclick=\"location.href='message'\"";
-             }else
+                }
+                else
+                {
+                    
+                $_SESSION["logi"]=$_GET["message"];
+                $Lurl ="onclick=\"location.href='message'\"";
+                }
+                
+            }
+             else 
              {
                     $Lurl ="onclick=\"location.href='index'\"";
              }
@@ -49,21 +55,21 @@
                     if($resultem['name'] == $_POST['txtUserName'] && $resultem['password'] == $_POST['txtPassword'])
                     {
   	                    $_SESSION["UserName"] = $_POST["txtUserName"];
-                        if(isset($_SESSION["logi"]))
+                        if($_GET["message"]==1)
   	                    {
   	                        header("Location: message");
   	                        exit();
   	                    }
   	                    else
   	                    {  
-  	                    header("Location: message");
-  	  	  	            exit();
+  	                        header("Location: index");
+  	  	  	                exit();
   	                    }
                     }
                 }
             }
-  	                 // header("Location: login.php");
-  	                 // exit();
+  	                  header("Location: login");
+  	                  exit();
   	
         }
       
@@ -71,9 +77,9 @@
 
           
           
+        $data=$Lurl;
   
-  
-      $this->view("login",$Lurl);
+      $this->view("login",$data);
    }
      
      

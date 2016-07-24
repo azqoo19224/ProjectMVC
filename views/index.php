@@ -10,7 +10,10 @@
 		<link href="css/styles.css" rel="stylesheet">
 
     <style type="text/css">
-      #map { height: 100%; }
+     
+      #map-canvas {
+width: 1500px;
+min-height: 1600px;}
     </style>
     
   <!--星星-->
@@ -24,7 +27,7 @@
 
 //-----------------------------------AREA CHANGE----------------------
 $(document).ready(initArea).ready(initTxtUse).ready(fristReady);
-//---------------------------letterArea-------------------------------
+//---------------------------letterArea 搜尋地區 -------------------------------
 
 function fristReady(){
   $.ajax({
@@ -55,14 +58,14 @@ $("#Area").on("change",function(){
 
 }
 
-//--------------------------------------changetxt-----------------------------
+//--------------------------------------changetxt 搜尋名稱-----------------------------
 function initTxtUse() {
 	      
 $("#txtUse").on("change",function(){
 		Change()});
 
 }
-//--------------------------------------change---------------------------------
+//--------------------------------------change  呼叫跟改資料---------------------------------
 function Change() {
 
 	var s = $("#Area option:selected").val();
@@ -85,7 +88,7 @@ function Change() {
 }
 
 
-//----------------------------顯示park資料-------------------
+//----------------------------顯示選取地點資料-------------------
     function seachID(ID)
 	 {
 	 
@@ -102,16 +105,16 @@ function Change() {
 	        {
 	          
 	          var obj=JSON.parse(json);
+	          $("#pac-input").val(obj.name);
 	          $("#nameid").text(obj.name);
-	          $("#mapName").text(obj.name);
+	        
 	          $("#area").text("地區: "+obj.area);
 	          $("#summary").text("規格: "+obj.summary);
 	          $("#tel").text("電話: "+obj.tel);
 	          $("#address").text("地點: "+obj.address);
 	          $("#payex").text("收費: "+obj.payex);
 	          
-	          
-	        
+	   
 	         if(obj.o=='0')
 	         $("#Msg").text("我要評論")
 	         else
@@ -142,7 +145,7 @@ function Change() {
 	      });
 	     }
 	 
-//-----------------------------------評論顯示---------------------------------
+//-----------------------------------評論/隱藏 顯示---------------------------------
 	function Show(){
   $("#ShowM").toggle();
  
@@ -193,7 +196,7 @@ function Change() {
           <img src="img/car88.jpg">
           <div class="container">
             <div class="carousel-caption">
-              <h2>停車場車位查詢系統</h2>
+              <h2>停車場查詢系統</h2>
               <p></p>
             </div>
           </div>
@@ -202,7 +205,7 @@ function Change() {
           <img src="img/tt.jpg">
           <div class="container">
             <div class="carousel-caption">
-              <h1>停車場車位查詢系統</h1>
+              <h1>停車場查詢系統</h1>
               <p></p>
             </div>
           </div>
@@ -211,7 +214,7 @@ function Change() {
           <img src="img/t6.jpg">
           <div class="container">
             <div class="carousel-caption">
-              <h2>停車場車位查詢系統</h2>
+              <h2>停車場查詢系統</h2>
               <p></p>
             </div>
           </div>
@@ -347,42 +350,31 @@ function Change() {
   <div class="col-sm-6 col-sm-offset-3 text-center"><h2 style="padding:20px;background-color:rgba(5,5,5,.8)">Map</h2></div>
 </section>
   <div class="col-sm-10 col-sm-offset-1">
-      <hr>
-      <h1 id=mapName></h1>
-      <hr>
-  </div>   
- 
-  <div id="map-canvas"></div>
-  <div class="row">
- 
-  <hr>
-  
-  <div class="col-sm-8"></div>
-  <div class="col-sm-3 pull-right">
 
-      <address>
-        The Firm, Inc.<br>
-        <span id="map-input">
-        1500 Main Street<br>
-        Springfield, MA 01115</span><br>
-        P: (413) 700-5999
-      </address>
-    
-      <address>
-        <strong>Email Us</strong><br>
-        <a href="mailto:#">first.last@example.com</a>
-      </address>          
-  </div>
+        <input id="pac-input" class="controls" type="text">
+<div id="map-canvas">  </div>
+  </div>   
+  
+        
+  
+
+
+  
+
   
 </div><!--/row-->
 
 </div><!--/wrap-->
 
+
+
+
 	<!-- script references -->
 		<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
 		<script src="js/bootstrap.min.js"></script>
-		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
+		<!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>-->
 		<script src="js/scripts.js"></script>
+		<!--<script src="https://maps.google.com/maps/api/js?sensor=false"></script>-->
 		
 		<!---------------------------------------star-------------------------------------------->
 		<script>
@@ -400,57 +392,82 @@ $.fn.raty.defaults.path = 'images';
 
 		<!--//--------------------------------------------------------MAP----------------------------------->
 		<script type="text/javascript">
-		
-var map;
-function initMap(Lat,Lng) {
-  var Lat = 25.04815;
-  var Lng =121.5191;
-  map = new google.maps.Map(document.getElementById('map-canvas'), {
-    
-    
-    center: {lat: Lat, lng: Lng},
-    zoom: 17
 
+      		
+function initAutocomplete() {
+  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+    center: {lat: 25.047853, lng: 121.522508},
+    zoom: 13,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
   });
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('pac-input');
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  var markers = [];
+  // [START region_getplaces]
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
+  // [END region_getplaces]
 }
 
-function GetAddressMarker()
-{//重新定位地圖位置與標記點位置
-address = $("#address_val").val();
-geocoder = new google.maps.Geocoder();
-geocoder.geocode(
-{
-  'address':address
-},function (results,status) 
-{
-if(status==google.maps.GeocoderStatus.OK) 
-{
-    //console.log(results[0].geometry.location);
-    LatLng = results[0].geometry.location;
-    map.setCenter(LatLng);  //將地圖中心定位到查詢結果
-    marker.setPosition(LatLng); //將標記點定位到查詢結果
-    marker.setTitle(address); //重新設定標記點的title
-    $("#SearchLatLng").html("【您輸入的地址位置】緯度：" + LatLng.lat() + "經度：" + LatLng.lng());
-}
-}
-); 
-}
- 
-$(document).ready(function() { 
-  //綁定地址輸入框的keyup事件以即時重新定位
-  $("#address_val").bind("keyup",function(){ 
-    GetAddressMarker();
-    $("#NowLatLng").html("【移動標記點後的位置】");
-  }); 
-});
+      
     </script>
     
 		
 		 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvv993Le3vmuTkcgSiz_wG5cLmucOAdbs&callback=initMap" async defer></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwHm8ZEG7iU0_DttL1sul-eddqbuokVYk&libraries=places&callback=initAutocomplete" async defer></script>
     </script>
 		
-		
+		   
 		
 	</body>
 </html>
