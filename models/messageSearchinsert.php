@@ -26,3 +26,7 @@ class messageSearchinsert{
           mysql_query( $this->insertMember, $this->db->get_connect());
       }
 }
+ 
+    
+              
+          
