@@ -9,7 +9,7 @@ class loginSearchMember{
             $this->db=new config;
       }
       function searchMember(){
-       $searchMember ="select name,password from Member";
+       $searchMember ="select name,password from Member where name ='{$_POST['txtUserName']}' and password ='{$_POST['txtPassword']}'";
        $resultMember = mysql_query ( $searchMember, $this->db->get_connect() );
        return $resultMember;
     }

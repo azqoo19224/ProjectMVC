@@ -5,16 +5,16 @@
 <title><?php echo $_SESSION["UserName"]?></title>
 <link rel="stylesheet"
 	href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css" />
-<script src="jquery-1.9.1.min.js"></script>
+<script src="javascripts/jquery-1.9.1.min.js"></script>
 <script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
 
 </head>
 <body>
 	<div data-role="page">
 		<div data-role="content">
-			<form method="post" action="message.php">
+			<form method="post" action="message">
                         <h1>HELLO <?php echo  $_SESSION["login"].$_SESSION["UserName"]?></h1>
-                        <h2><?php echo $name ?></h2>
+                        <h2><?php echo $data ?></h2>
                         <input type="text" size = "54" name="message" id="message"/>
 
             			<fieldset data-role="controlgroup" data-type="horizontal">

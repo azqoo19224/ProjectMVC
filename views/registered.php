@@ -7,7 +7,7 @@
      
      <link rel="stylesheet"
 	      href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css" />
-      <script src="jquery-1.9.1.min.js"></script>
+      <script src="javascripts/jquery-1.9.1.min.js"></script>
       <script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
    		<!--<script type="text/javascript" src="jquery.js"></script>-->
 	  <script type="text/javascript">

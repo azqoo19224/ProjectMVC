@@ -7,10 +7,12 @@
         {
             $this->db=new config;
         }
+        
         function letterArea(){
             // global $link;
 
-            $searchletter ="select id, area, name, summary, address, tel, payex from Park where area like '%{$_GET['letter']}%' and name like '%{$_GET['txtUse']}%'";
+            $searchletter ="select id, area, name, summary, address, tel, payex from Park 
+            where area like '%{$_GET['letter']}%' and name like '%{$_GET['txtUse']}%'";
             $resultID= mysql_query ( $searchletter, $this->db->get_connect() );
             return $resultID;
            

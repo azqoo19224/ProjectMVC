@@ -12,8 +12,8 @@
     <style type="text/css">
      
       #map-canvas {
-width: 1500px;
-min-height: 1600px;}
+          width: 800px;
+          min-height: 800px;}
     </style>
     
   <!--星星-->
@@ -47,8 +47,6 @@ function fristReady(){
 	        }
 	      });
 }
-
-
 function initArea() {
 
 Change();
@@ -57,15 +55,14 @@ $("#Area").on("change",function(){
 		Change()});
 
 }
-
-//--------------------------------------changetxt 搜尋名稱-----------------------------
+//--------------------------------------changetxt_搜尋名稱-----------------------------
 function initTxtUse() {
 	      
 $("#txtUse").on("change",function(){
 		Change()});
 
 }
-//--------------------------------------change  呼叫跟改資料---------------------------------
+//--------------------------------------change_呼叫跟改資料---------------------------------
 function Change() {
 
 	var s = $("#Area option:selected").val();
@@ -86,13 +83,9 @@ function Change() {
 	        }
 	      });
 }
-
-
-//----------------------------顯示選取地點資料-------------------
-    function seachID(ID)
+//---------------------------------------顯示選取地點資料-------------------
+function seachID(ID)
 	 {
-	 
-	   
 	    $.ajax({
 	        type:"GET",
 	        url:"index/seachID?ID="+ID,
@@ -103,7 +96,6 @@ function Change() {
 	        },
 	        success:function(json)
 	        {
-	          
 	          var obj=JSON.parse(json);
 	          $("#pac-input").val(obj.name);
 	          $("#nameid").text(obj.name);
@@ -119,15 +111,12 @@ function Change() {
 	         $("#Msg").text("我要評論")
 	         else
 	         $("#Msg").text("我要修改評論");
-	          
-	          seachMap(obj.id);
-	          
-	        }
+	         }
 	      });
 	      
 	 }
-//------------------------------------顯示評論-----------------------------	 
-	     function seachmsg(ID){
+//---------------------------------------顯示評論-----------------------------	 
+function seachmsg(ID){
 	     
 	       $.ajax({
 	        type:"GET",
@@ -140,43 +129,21 @@ function Change() {
 	        success:function(json1)
 	        {
 	          $("#msg").html(json1);
-
 	        }
 	      });
 	     }
-	 
-//-----------------------------------評論/隱藏 顯示---------------------------------
+//---------------------------------------評論/隱藏 顯示---------------------------------
 	function Show(){
   $("#ShowM").toggle();
  
 };
 	 
-	 //function seachMap(id){
-	   
-	 //  $.ajax({
-	 //    type:"GET",
-	 //    url:"seachTotol.php?id="+id,
-	 //    dataType:"text",
-	 //    error:function(Xhr)
-	 //    {
-	 //      alert("error");
-	 //    },
-	 //    success:function(json){
-	 //      var obj=JSON.parse(json);
-	 //       $("#mapName").text(obj.id);
-	       
-	 //       initMap(obj.Xcod,obj.Ycod);
-	        
-	 //    }
-	 //  });
-	 //}
-
-	</script>
+	 	</script>
 
 	</head>
 
 	<body>
-<!-- Wrap all page content here -->
+
 <div id="wrap">
 
  
@@ -193,7 +160,7 @@ function Change() {
       </ol>
       <div class="carousel-inner">
         <div class="item active">
-          <img src="img/car88.jpg">
+          <img src="images/img/car88.jpg">
           <div class="container">
             <div class="carousel-caption">
               <h2>停車場查詢系統</h2>
@@ -202,7 +169,7 @@ function Change() {
           </div>
         </div>
         <div class="item">
-          <img src="img/tt.jpg">
+          <img src="images/img/tt.jpg">
           <div class="container">
             <div class="carousel-caption">
               <h1>停車場查詢系統</h1>
@@ -211,7 +178,7 @@ function Change() {
           </div>
         </div>
         <div class="item">
-          <img src="img/t6.jpg">
+          <img src="images/img/t6.jpg">
           <div class="container">
             <div class="carousel-caption">
               <h2>停車場查詢系統</h2>
@@ -324,17 +291,15 @@ function Change() {
      <hr>
      
     <div>
-      <div><h3>
-      <A id="ShowMsg" taregt="_self"  href="#Place" onclick="Show()">評論</A>
-      
-      <A id="Msg" taregt="_self" href="login?message=1"></A>
-      </h3>                              
-    </div>
-    <div id = "ShowM" data-theme="a" style = "display:none">
-    <p id="msg">123</p>
-    <div id="score">
-    </div>  
-    </div>
+          <div><h3>
+              <A id="ShowMsg" taregt="_self"  href="#Place" onclick="Show()">評論</A>
+              <A id="Msg" taregt="_self" href="login?message=1"></A>
+              </h3>                              
+          </div>
+          <div id = "ShowM" data-theme="a" style = "display:none">
+              <p id="msg"></p>
+              <div id="score"></div>  
+          </div>
     </div>
      
       <hr>
@@ -344,50 +309,31 @@ function Change() {
   	</div><!--/col-->
 </div><!--/場地詳細-->
 
-<div class="divider"></div>
+
   
 <section class="bg-3" id="Map">
-  <div class="col-sm-6 col-sm-offset-3 text-center"><h2 style="padding:20px;background-color:rgba(5,5,5,.8)">Map</h2></div>
+  <div class="col-sm-6 col-sm-offset-3 text-center">
+    <h2 style="padding:20px;background-color:rgba(5,5,5,.8)">Map</h2></div>
 </section>
   <div class="col-sm-10 col-sm-offset-1">
 
         <input id="pac-input" class="controls" type="text">
-<div id="map-canvas">  </div>
-  </div>   
-  
+        <div id="map-canvas"></div>
         
-  
+  </div>   
 
-
-  
-
-  
 </div><!--/row-->
 
 </div><!--/wrap-->
 
-
-
-
-	<!-- script references -->
-		<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
 		<script src="js/bootstrap.min.js"></script>
-		<!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>-->
 		<script src="js/scripts.js"></script>
-		<!--<script src="https://maps.google.com/maps/api/js?sensor=false"></script>-->
-		
+	
 		<!---------------------------------------star-------------------------------------------->
 		<script>
 
-$.fn.raty.defaults.path = 'images';
+  $.fn.raty.defaults.path = 'images';
 
-// $('#default').raty();
-
-// function Star(a,i){
-
-// $("#\i").raty({ readOnly: true, score: a });
-   
-// }
 </script>
 
 		<!--//--------------------------------------------------------MAP----------------------------------->
@@ -401,20 +347,15 @@ function initAutocomplete() {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
-  // Create the search box and link it to the UI element.
+ 
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-  // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function() {
     searchBox.setBounds(map.getBounds());
   });
 
   var markers = [];
-  // [START region_getplaces]
-  // Listen for the event fired when the user selects a prediction and retrieve
-  // more details for that place.
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
 
@@ -422,13 +363,13 @@ function initAutocomplete() {
       return;
     }
 
-    // Clear out the old markers.
+
     markers.forEach(function(marker) {
       marker.setMap(null);
     });
     markers = [];
 
-    // For each place, get the icon, name and location.
+
     var bounds = new google.maps.LatLngBounds();
     places.forEach(function(place) {
       var icon = {
@@ -439,7 +380,7 @@ function initAutocomplete() {
         scaledSize: new google.maps.Size(25, 25)
       };
 
-      // Create a marker for each place.
+   
       markers.push(new google.maps.Marker({
         map: map,
         icon: icon,
@@ -448,7 +389,7 @@ function initAutocomplete() {
       }));
 
       if (place.geometry.viewport) {
-        // Only geocodes have viewport.
+
         bounds.union(place.geometry.viewport);
       } else {
         bounds.extend(place.geometry.location);
@@ -456,7 +397,7 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   });
-  // [END region_getplaces]
+
 }
 
       
