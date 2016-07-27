@@ -12,7 +12,7 @@ class indexSeachmsg{
     function seachmsg()
     {
         $searchMsg ="select name,star,msg from Message where id = '{$_GET['ID']}'";
-        $resultMsg = mysql_query ( $searchMsg, $this->db->get_connect() );
+        $resultMsg = mysql_query ( $searchMsg);
         $i =0;
         $array=array("resultMsg"=>$resultMsg);
         return $array;

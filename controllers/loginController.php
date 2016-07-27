@@ -14,7 +14,6 @@
                     exit();
                 }
             }
-
 ///移除登出SESSION
             if (isset($_GET["logout"]))
             {  
@@ -22,10 +21,9 @@
 	            header("Location: index");
 	            exit();
             }
-       
       $this->view("login",$data);
    }
-   //確認資料
+//送出資料
   function btnOK(){
       if(isset($_POST['btnOK'])){
             if(isset($_POST['txtUserName']) && isset($_POST['txtPassword'])){

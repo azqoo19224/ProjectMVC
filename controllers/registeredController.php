@@ -13,8 +13,6 @@
 		      exit();
 
         }
-         
-         
     
        $this->view("registered",$data);
         } 
@@ -23,12 +21,7 @@
     {
         $resultMember=$this->model("registeredmemberName");
         $resultMem=$resultMember->searchmember();
-         
-        
-        
         $s="可以使用";
-        
-        
         while($resultem= mysql_fetch_array($resultMem))
         {
             if($resultem['name'] == $_GET['txtmemberName'])

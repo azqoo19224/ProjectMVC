@@ -10,7 +10,7 @@ class registeredInsert{
     function insert_registered(){
         
         $insertMember ="INSERT INTO `Member` (name, password) VALUES ('{$_POST['txtmemberName']}','{$_POST['txtmemberPassword']}')";
-        mysql_query ($insertMember, $this->db->get_connect() );
+        mysql_query ($insertMember);
         
         
     }

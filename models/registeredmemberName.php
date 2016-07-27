@@ -10,9 +10,7 @@ class registeredmemberName{
       
     function searchmember(){
         $searchMember ="select name,password from Member";
-        $resultMember = mysql_query ( $searchMember, $this->db->get_connect() );
+        $resultMember = mysql_query ( $searchMember);
         return $resultMember;
-    
-        
     }
 }

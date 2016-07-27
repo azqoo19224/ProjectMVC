@@ -20,8 +20,7 @@
  
    
 //*****************************************地區*******************************************************//
-   function letterArea()
-   {
+ function letterArea(){
         $letterArea=$this->model("indexLetter");
         $resultID=$letterArea->letterArea();
         while($row=mysql_fetch_array($resultID))

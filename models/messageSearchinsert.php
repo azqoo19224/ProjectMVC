@@ -11,7 +11,7 @@ class messageSearchinsert{
       }
       function seachinsert(){
                 $searchMember="select name from Message where id = '{$_SESSION['id']}' and name ='{$_SESSION['UserName']}'";
-                $this->haveM=mysql_fetch_array(mysql_query($searchMember,$this->db->get_connect()));
+                $this->haveM=mysql_fetch_array(mysql_query($searchMember));
                 if($this->haveM != null){
                 $this->insertMember ="UPDATE `Message` SET `msg` = '{$_POST['message']}' , `star` ='{$_POST['rdoPet']}' WHERE `name` = '{$_SESSION['UserName']}' and `id` ='{$_SESSION['id']}'";
         }else{
@@ -23,7 +23,7 @@ class messageSearchinsert{
       }
       
       function insert(){
-          mysql_query( $this->insertMember, $this->db->get_connect());
+          mysql_query( $this->insertMember);
       }
 }
  
