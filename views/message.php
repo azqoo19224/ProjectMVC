@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title><?php echo $_SESSION["UserName"]?></title>
-<link rel="stylesheet"
-	href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css" />
-<script src="javascripts/jquery-1.9.1.min.js"></script>
-<script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<!--<link rel="stylesheet"-->
+<!--	href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css" />-->
+<!--<script src="javascripts/jquery-1.9.1.min.js"></script>-->
+<!--<script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>-->
 
 </head>
 <body>
 	<div data-role="page">
 		<div data-role="content">
-			<form method="post" action="message">
+			<form method="post" action="message/btnOK">
                         <h1>HELLO <?php echo  $_SESSION["login"].$_SESSION["UserName"]?></h1>
                         <h2><?php echo $data ?></h2>
                         <input type="text" size = "54" name="message" id="message"/>
@@ -38,7 +38,7 @@
 		                               <!--onclick="location.href='index.php?#msg'"-->
 			
 			<div class="ui-grid-a">
-				<div class="ui-block-a"><input type="submit" name="btnOK" value="OK" onclick="location.href='index'" /></div>
+				<div class="ui-block-a"><input type="submit" name="btnOK" value="OK"  /></div>
 				<div class="ui-block-b"><input type="button" name="btnCancel" value="取消" onclick="location.href='index'" /></div>
 			</div>
 
@@ -56,15 +56,6 @@
 <script src="javascripts/jquery.js"></script><script src="javascripts/jquery.raty.js"></script>
 <script src="javascripts/labs.js" type="text/javascript"></script>
 
-		<script>
-
-$.fn.raty.defaults.path = 'images';
-
-// $('#default').raty();
-
-// function Star(a,i){
-
-// $("#\i").raty({ readOnly: true, score: a });
-   
-// }
+<script>
+	$.fn.raty.defaults.path = 'images';
 </script>

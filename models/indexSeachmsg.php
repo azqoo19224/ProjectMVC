@@ -2,12 +2,11 @@
     
 require_once ("config.php");
 class indexSeachmsg{
-    private $db;
-    function __construct()
-    {
-        $this->db=new config;
-    }
-   
+    
+   function __construct()
+      {
+            new config;
+      }
 
     function seachmsg()
     {

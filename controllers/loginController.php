@@ -2,7 +2,8 @@
  session_start();
 
  
- class loginController extends Controller{
+ class loginController extends Controller
+ {
       function index()
       {
 // 跳轉評論
@@ -24,9 +25,12 @@
       $this->view("login",$data);
    }
 //送出資料
-  function btnOK(){
-      if(isset($_POST['btnOK'])){
-            if(isset($_POST['txtUserName']) && isset($_POST['txtPassword'])){
+  function btnOK()
+  {
+      if(isset($_POST['btnOK']))
+      {
+            if(isset($_POST['txtUserName']) && isset($_POST['txtPassword']))
+            {
              $searchMem=$this->model("loginSearchMember");
              $resultMember=$searchMem->searchMember();
              $resultem= mysql_fetch_array($resultMember);
@@ -43,7 +47,7 @@
   	  	  	                exit();
   	                    }
                     }
-                  }
+            }
        }
   	                  header("Location:../login");
   	                  exit();

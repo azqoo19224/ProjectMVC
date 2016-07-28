@@ -1,14 +1,15 @@
 <?php
     require_once ("config.php");
     
-    class indexSeachID{
-        private $db;
-        function __construct()
-        {
-            $this->db=new config;
-        }
+    class indexSeachID
+    {
+       function __construct()
+      {
+            new config;
+      }
         
-       function seachID(){
+       function seachID()
+       {
         unset($_SESSION['result']);
         $_SESSION["id"]=$_GET["ID"];
         $Mname=0;

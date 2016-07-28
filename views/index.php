@@ -29,8 +29,10 @@
 $(document).ready(initArea).ready(initTxtUse).ready(fristReady);
 //---------------------------letterArea 搜尋地區 -------------------------------
 
-function fristReady(){
-  $.ajax({
+function fristReady()
+{
+  $.ajax(
+    {
 	        type:"GET",
 	        url:"index/SessionID",
 	        dataType:"text",
@@ -45,29 +47,35 @@ function fristReady(){
 	          seachmsg(data);
 	         
 	        }
-	      });
+	   });
 }
-function initArea() {
+function initArea()
+{
 
 Change();
 
-$("#Area").on("change",function(){
+$("#Area").on("change",function()
+{
 		Change()});
 
 }
 //--------------------------------------changetxt_搜尋名稱-----------------------------
-function initTxtUse() {
+function initTxtUse()
+{
 	      
-$("#txtUse").on("change",function(){
+$("#txtUse").on("change",function()
+{
 		Change()});
 
 }
 //--------------------------------------change_呼叫跟改資料---------------------------------
-function Change() {
+function Change()
+{
 
 	var s = $("#Area option:selected").val();
 	var u = $("#txtUse").val();
-	$.ajax({
+	$.ajax(
+	  {
 	        type:"GET",
 	        url:"index/letterArea?letter="+s+"&txtUse="+u,
 	        dataType:"text",
@@ -85,8 +93,9 @@ function Change() {
 }
 //---------------------------------------顯示選取地點資料-------------------
 function seachID(ID)
-	 {
-	    $.ajax({
+{
+	    $.ajax(
+	      {
 	        type:"GET",
 	        url:"index/seachID?ID="+ID,
 	        dataType:"text",
@@ -116,27 +125,30 @@ function seachID(ID)
 	      
 	 }
 //---------------------------------------顯示評論-----------------------------	 
-function seachmsg(ID){
+function seachmsg(ID)
+{
 	     
-	       $.ajax({
-	        type:"GET",
-	        url:"index/seachmsg?ID="+ID,
-	        dataType:"text",
-	        error:function(Xhr)
-	        {
-	          alert("error");
-	        },
-	        success:function(json1)
-	        {
-	          $("#msg").html(json1);
-	        }
-	      });
+	       $.ajax(
+	         {
+	            type:"GET",
+	            url:"index/seachmsg?ID="+ID,
+	            dataType:"text",
+	            error:function(Xhr)
+  	        {
+  	          alert("error");
+  	        },
+  	          success:function(json1)
+  	        {
+  	          $("#msg").html(json1);
+  	        }
+  	      });
 	     }
 //---------------------------------------評論/隱藏 顯示---------------------------------
-	function Show(){
-  $("#ShowM").toggle();
+	function Show()
+	{
+    $("#ShowM").toggle();
  
-};
+  };
 	 
 	 	</script>
 
