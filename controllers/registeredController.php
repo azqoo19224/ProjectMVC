@@ -7,33 +7,28 @@
  {
    
     unset($_SESSION['message']);
-    if (isset($_POST["btnROK"]))
-    {
-        $registered=$this->model("registeredInsert");
-        $registered->insert_registered();
-		header("Location: login");
-		exit();
-
-    }
-    
-     $this->view("registered",$data);
+    $this->view("registered",$data);
  } 
         
     function searchmember()
     {
         $resultMember=$this->model("registeredmemberName");
         $resultMem=$resultMember->searchmember();
-        $s="可以使用";
-        while($resultem= mysql_fetch_array($resultMem))
-        {
-            if($resultem['name'] == $_GET['txtmemberName'])
-            {
-                 $s = "帳號重複";
-            }
-        }
-            
-        echo $s;
+        $this->view("ajax",$resultMem);
         
-        }
+        
+    }
      
+ }
+ 
+ function btnOK(){
+     if (isset($_POST["btnROK"]))
+    {
+        $registered=$this->model("registeredInsert");
+        $registered->insert_registered();
+		header("Location:../login");
+		
+		exit();
+
+    }
  }

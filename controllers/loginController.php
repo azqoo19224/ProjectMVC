@@ -6,24 +6,8 @@
  {
       function index()
       {
-// 跳轉評論
-            if(isset($_GET["message"]))
-            {   $_SESSION['message']=$_GET['message'];
-                if(isset($_SESSION['UserName']))
-                {
-                  header("Location: message");
-                    exit();
-                }
-            }
-///移除登出SESSION
-            if (isset($_GET["logout"]))
-            {  
-                $_SESSION["UserName"]=null;
-	            header("Location: index");
-	            exit();
-            }
-      $this->view("login",$data);
-   }
+            $this->view("login",$data);
+      }
 //送出資料
   function btnOK()
   {
@@ -33,7 +17,7 @@
             {
              $searchMem=$this->model("loginSearchMember");
              $resultMember=$searchMem->searchMember();
-             $resultem= mysql_fetch_array($resultMember);
+             $resultem= mysqli_fetch_array($resultMember);
                     if(isset($resultem['name'])){
   	                    $_SESSION["UserName"] = $_POST["txtUserName"];
                         if(isset($_SESSION['message']))

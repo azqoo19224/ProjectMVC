@@ -5,57 +5,17 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
      
      
-     <link rel="stylesheet"
-	      href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css" />
-      <script src="javascripts/jquery-1.9.1.min.js"></script>
-      <script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
+     <!--<link rel="stylesheet"-->
+	    <!--  href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css" />-->
+     <!-- <script src="javascripts/jquery-1.9.1.min.js"></script>-->
+     <!-- <script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>-->
    		<!--<script type="text/javascript" src="jquery.js"></script>-->
-	  <script type="text/javascript">
-	  
-$(document).ready(inputTXT);
-//---------------------------判斷帳號是否重複-------------------------------
-function inputTXT()
-{
-
-$("#txtmemberName").on("change",function()
-{
-
-if(!$("#txtmemberName").val())
-{
-  $("#txtN").text("請輸入帳號密碼");
-}else
-{
-  memberName();
-}
-
-});
-}
-	  function memberName()
-	  {
-	    var s = $("#txtmemberName").val();
-	    $.ajax(
-	      {
-  	      type:"GET",
-  	      url:"registered/searchmember?txtmemberName="+s,
-  	      dataType:"text",
-  	      error:function(Xhr){
-  	        alert("error");
-  	      },
-  	      success:function(data)
-  	      {
-  	          $("#txtN").text(data);
-  	      }
-  	      
-  	    });
-	  }
-	  
-	  
-	  </script>
+	  <script src="js/ajaxR.js"></script>
 </head>
 <body>
       <div data-role="page">
 	    	<div data-role="content">
-      <form id="form1" style="font-family:DFKai-sb;" name="form1" method="post" action="registered">
+      <form id="form1" style="font-family:DFKai-sb;" name="form1" method="post" action="registered/btnOK">
         <table width="800" border="9" align="center" cellpadding="10" cellspacing="10" bgcolor="#f2f2f2">
           <tr>
             <td colspan="2" align="center" bgcolor="#CCCCCC">
@@ -79,7 +39,7 @@ if(!$("#txtmemberName").val())
           <tr>
             <td colspan="2" align="center" bgcolor="#CCCCCC">
              
-              <input type="submit" name="btnROK" id="btnROK" value="註冊" onclick="location.href='login'" />
+              <input type="submit" name="btnROK" id="btnROK" value="註冊" />
               <input type="reset" name="btnReset" id="btnReset" value="重設" />
               <input type="button" name="btnCancel" id="btnCancel" onclick="location.href='login'"  value="取消" />
              

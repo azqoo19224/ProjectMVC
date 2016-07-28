@@ -1,5 +1,5 @@
 <?php
-require_once ("config.php");
+
 
 class messageSearchinsert
 {
@@ -8,12 +8,13 @@ class messageSearchinsert
     
       function __construct()
       {
-            new config;
+           config::setConnect();
       }
       function seachinsert()
       {
                 $searchMember="SELECT `NAME` FROM `Message` WHERE `id` = '{$_SESSION['id']}' and name ='{$_SESSION['UserName']}'";
-                $this->haveM=mysql_fetch_array(mysql_query($searchMember));
+                $this->haveM=mysqli_fetch_array( config::$mysqli->query($searchMember));
+                $name=($this->haveM !=null)? "修改評論": "評論";
                 if($this->haveM != null)
                 {
                     $this->insertMember ="UPDATE `Message` SET `msg` = '{$_POST['message']}' , `star` ='{$_POST['rdoPet']}' WHERE `name` = '{$_SESSION['UserName']}' and `id` ='{$_SESSION['id']}'";
@@ -22,13 +23,13 @@ class messageSearchinsert
                 {
                     $this->insertMember ="INSERT INTO `Message` (id, msg, name, star) VALUES ('{$_SESSION['id']}','{$_POST['message']}','{$_SESSION['UserName']}','{$_POST['rdoPet']}')";
                 }
-                return  $this->haveM;
+                return  $name;
                
 
       }
       
       function insert(){
-          mysql_query( $this->insertMember);
+           config::$mysqli->query( $this->insertMember);
       }
 }
  

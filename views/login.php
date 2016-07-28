@@ -1,3 +1,22 @@
+<?php
+// 跳轉評論
+            if(isset($_GET["message"]))
+            {   $_SESSION['message']=$_GET['message'];
+                if(isset($_SESSION['UserName']))
+                {
+                  header("Location: message");
+                    exit();
+                }
+            }
+///移除登出SESSION
+            if (isset($_GET["logout"]))
+            {  
+                $_SESSION["UserName"]=null;
+	            header("Location: index");
+	            exit();
+            }
+?>
+
 <!DOCTYPE html>
 
   <html>

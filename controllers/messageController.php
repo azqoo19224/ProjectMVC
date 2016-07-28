@@ -6,12 +6,11 @@
 function index()
 {
 
-unset($_SESSION['result']);
-unset($_SESSION['message']);
+        unset($_SESSION['result']);
+        unset($_SESSION['message']);
 
         $Message=$this->model("messageSearchinsert");
-        $get_Message=$Message->seachinsert();
-        $name=($get_Message!=null)? "修改評論": "評論";
+        $name=$Message->seachinsert();
         $data =$name;
         $this->view("message",$data);
 }
