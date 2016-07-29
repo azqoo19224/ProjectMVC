@@ -1,8 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <script src="javascripts/jquery.js"></script>
      
      
      <!--<link rel="stylesheet"-->
@@ -10,12 +11,12 @@
      <!-- <script src="javascripts/jquery-1.9.1.min.js"></script>-->
      <!-- <script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>-->
    		<!--<script type="text/javascript" src="jquery.js"></script>-->
-	  <script src="js/ajaxR.js"></script>
-</head>
+      <?php $this->js("r_ajax");?>
+    </head>
 <body>
       <div data-role="page">
 	    	<div data-role="content">
-      <form id="form1" style="font-family:DFKai-sb;" name="form1" method="post" action="registered/btnOK">
+      <form id="form2" style="font-family:DFKai-sb;" name="form2" method="post" action="registered/btnOK">
         <table width="800" border="9" align="center" cellpadding="10" cellspacing="10" bgcolor="#f2f2f2">
           <tr>
             <td colspan="2" align="center" bgcolor="#CCCCCC">

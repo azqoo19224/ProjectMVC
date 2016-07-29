@@ -14,6 +14,9 @@ class Controller {
         require_once "../ProjectMVC/views/$view.php";
         //../EasyMVC/views/Home/hello.php
     }
+    public function js($js) {
+     echo "<script src=/ProjectMVC/js/$js.js></script>";
+    }
 }
 
 ?>

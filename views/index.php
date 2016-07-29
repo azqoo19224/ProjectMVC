@@ -36,8 +36,7 @@
 <script src="javascripts/jquery.js"></script><script src="javascripts/jquery.raty.js"></script>
 <script src="javascripts/labs.js" type="text/javascript"></script>
 <!--<script type="text/javascript" src="jquery.js"></script>-->
-<script src="js/ajax.js"></script>
-
+<?php $this->js("ajax");?>
 	</head>
 
 	<body>
