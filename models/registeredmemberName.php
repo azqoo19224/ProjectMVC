@@ -4,16 +4,17 @@ class registeredmemberName
 {
      function __construct()
       {
-            config::setConnect();
+            // config::setConnect();
+            config::pdoConnect();
       }
       
     function searchmember()
     {
         $searchMember ="select name,password from Member";
-        $resultMember =  config::$mysqli->query($searchMember);
+        $resultMember =  config::$db->query($searchMember);
         $s="可以使用";
         
-        while($resultem= mysqli_fetch_array($resultMember))
+        while($resultem=$resultMember->fetch(PDO::FETCH_ASSOC))
         {
             if($resultem['name'] == $_GET['txtmemberName'])
             {

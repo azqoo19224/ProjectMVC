@@ -16,8 +16,8 @@
             if(isset($_POST['txtUserName']) && isset($_POST['txtPassword']))
             {
              $searchMem=$this->model("loginSearchMember");
-             $resultMember=$searchMem->searchMember();
-             $resultem= mysqli_fetch_array($resultMember);
+             $resultem=$searchMem->searchMember();
+            
                     if(isset($resultem['name'])){
   	                    $_SESSION["UserName"] = $_POST["txtUserName"];
                         if(isset($_SESSION['message']))

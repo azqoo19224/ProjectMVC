@@ -16,8 +16,8 @@
     }
     else
     {
-      $userName = $_SESSION["UserName"];
-      $userNmaeLogin ="<li><a href='login?logout=1'>".$userName."_logout</a></li>";
+       $userName = $_SESSION["UserName"];
+       $userNmaeLogin ="<li><a href='login?logout=1'>".$userName."_logout</a></li>";
     }
     
      $this->view("index",$userNmaeLogin);
@@ -27,11 +27,11 @@
 //*****************************************地區*******************************************************//
  function letterArea()
  {
-        $letterArea=$this->model("indexLetter");
-        $s=$letterArea->letterArea();
-       
-        $this -> view("ajax",$s);
-  
+            $letterArea=$this->model("indexLetter");
+            $s=$letterArea->letterArea();
+           
+            $this -> view("ajax",$s);
+      
     }
 
 //**********************************************seachID*********************************************//
@@ -45,7 +45,7 @@
  //*********************************************SessionID*********************************************/
  function SessionID()
  {
-          $this -> view("ajax",$_SESSION['id']);
+            $this -> view("ajax",$_SESSION['id']);
              
  }
  /**********************************************seachmsg*********************************************/

@@ -8,12 +8,14 @@ class messageSearchinsert
     
       function __construct()
       {
-           config::setConnect();
+        //   config::setConnect();
+           config::pdoConnect();
       }
       function seachinsert()
       {
                 $searchMember="SELECT `NAME` FROM `Message` WHERE `id` = '{$_SESSION['id']}' and name ='{$_SESSION['UserName']}'";
-                $this->haveM=mysqli_fetch_array( config::$mysqli->query($searchMember));
+                $Member =config::$db->query($searchMember);
+                $this->haveM=$Member->fetch(PDO::FETCH_ASSOC);
                 $name=($this->haveM !=null)? "修改評論": "評論";
                 if($this->haveM != null)
                 {
@@ -29,7 +31,7 @@ class messageSearchinsert
       }
       
       function insert(){
-           config::$mysqli->query( $this->insertMember);
+           config::$db->query( $this->insertMember);
       }
 }
  

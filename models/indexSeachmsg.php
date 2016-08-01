@@ -5,15 +5,16 @@ class indexSeachmsg{
     
    function __construct()
       {
-            config::setConnect();
+            // config::setConnect();
+            config::pdoConnect();
       }
 
     function seachmsg()
     {
         $searchMsg ="select name,star,msg from Message where id = '{$_GET['ID']}'";
-        $resultMsg = config::$mysqli->query($searchMsg);
+        $resultMsg = config::$db->query($searchMsg);
         $i=0;
-        while($msg = mysqli_fetch_array($resultMsg))
+        while($msg = $resultMsg->fetch(PDO::FETCH_ASSOC))
         {
                $array[$i]=array("name"=>$msg['name'],"star"=>$msg['star'],"msg"=>$msg['msg']);
                json_encode($array,JSON_UNESCAPED_UNICODE);
