@@ -15,11 +15,11 @@
         $_SESSION["id"]=$_GET["ID"];
         
         $Mname=0;
-        $m ="select name from Message where id = '{$_SESSION['id']}' and name ='{$_SESSION['UserName']}'";
+        $m ="SELECT `name` FROM `Message` WHERE `id` = '{$_SESSION['id']}' AND `name` ='{$_SESSION['UserName']}'";
         $searchMemberName=config::$db->query($m);
         $Mname=$searchMemberName->fetch(PDO::FETCH_ASSOC);
         
-        $ID ="select id,area, name, summary, address, tel, payex from Park where id = '{$_GET['ID']}'";
+        $ID ="SELECT `id`,`area`, `name`, `summary`, `address`, `tel`, `payex` FROM `Park` WHERE `id` = '{$_GET['ID']}'";
         $searchID=config::$db->query($ID);
         $resultID =$searchID->fetch(PDO::FETCH_ASSOC);
         

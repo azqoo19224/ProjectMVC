@@ -11,7 +11,7 @@ class indexSeachmsg{
 
     function seachmsg()
     {
-        $searchMsg ="select name,star,msg from Message where id = '{$_GET['ID']}'";
+        $searchMsg ="SELECT `name`, `star`, `msg` FROM `Message` WHERE `id` = '{$_GET['ID']}'";
         $resultMsg = config::$db->query($searchMsg);
         $i=0;
         while($msg = $resultMsg->fetch(PDO::FETCH_ASSOC))

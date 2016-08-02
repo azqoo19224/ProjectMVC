@@ -10,7 +10,7 @@ class loginSearchMember{
             config::pdoConnect();
       }
       function searchMember(){
-       $searchMember ="select name,password from Member where name ='{$_POST['txtUserName']}' and password ='{$_POST['txtPassword']}'";
+       $searchMember ="SELECT `name`, `password` FROM `Member` WHERE `name` ='{$_POST['txtUserName']}' and password ='{$_POST['txtPassword']}'";
        $resultMember = config::$db->query( $searchMember);
        $result = $resultMember->fetch(PDO::FETCH_ASSOC);
        return $result;

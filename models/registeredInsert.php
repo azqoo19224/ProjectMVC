@@ -11,7 +11,7 @@ class registeredInsert
       }
     function insert_registered()
     {
-        $insertMember ="INSERT INTO `Member` (name, password) VALUES ('{$_POST['txtmemberName']}','{$_POST['txtmemberPassword']}')";
+        $insertMember ="INSERT INTO `Member` (`name`, `password`) VALUES ('{$_POST['txtmemberName']}','{$_POST['txtmemberPassword']}')";
          config::$db->query($insertMember);
     }
     

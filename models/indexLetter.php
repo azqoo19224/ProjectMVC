@@ -10,8 +10,8 @@
         }
         function letterArea()
         {
-            $searchletter ="select id, area, name, summary, address, tel, payex from Park 
-            where area like '%{$_GET['letter']}%' and name like '%{$_GET['txtUse']}%'";
+            $searchletter ="SELECT `id`, `area`, `name`, `summary`, `address`, `tel`, `payex` FROM `Park` 
+            WHERE `area` LIKE '%{$_GET['letter']}%' AND `name` LIKE '%{$_GET['txtUse']}%'";
             $resultID= config::$db->query( $searchletter);
             
             

@@ -10,7 +10,7 @@ class registeredmemberName
       
     function searchmember()
     {
-        $searchMember ="select name,password from Member";
+        $searchMember ="SELECT `name`, `password` FROM `Member`";
         $resultMember =  config::$db->query($searchMember);
         $s="可以使用";
         
